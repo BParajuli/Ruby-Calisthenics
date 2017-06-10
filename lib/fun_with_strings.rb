@@ -1,12 +1,39 @@
 module FunWithStrings
   def palindrome?
-    # your code here
+    pal = self.downcase.gsub(/\W/, '')
+ 
+    pal == pal.reverse
   end
   def count_words
-    # your code here
+    count = {}
+
+    array = self.downcase.gsub(/\W/, ' ').split(/\s+/)
+  
+    
+    array.each do |x|
+      if count.has_key?(x) && x != ''  
+        count[x] += 1
+      elsif x != ''
+        count[x] = 1
+      end
+    end
+    count
   end
   def anagram_groups
-    # your code here
+   anag = {}
+  
+   array = self.downcase.gsub(/\W/, ' ').split(/\s+/)
+
+   array.each do |x|
+     
+     order = x.split('').sort.join('')
+     if anag[order].nil?
+       anag[order] = []
+     end
+     anag[order] << x
+   end
+   anag.values
+   
   end
 end
 
